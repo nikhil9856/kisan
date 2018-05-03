@@ -7,7 +7,7 @@ import config
 
 hostenv = os.environ.get('HOSTENV') or 'default'
 
-application = app = create_app(hostenv)
+app = create_app(hostenv)
 manager = Manager(app)
 manager.add_command("runserver", Server(host="127.0.0.1", port=config.PORT))
 manager.add_command("db", MigrateCommand)
@@ -22,3 +22,4 @@ def test(coverage=False):
 
 if __name__ == '__main__':
     manager.run()
+    app.run()

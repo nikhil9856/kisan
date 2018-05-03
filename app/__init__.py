@@ -18,8 +18,8 @@ def initialize_db(app):
 
 
 def create_app(config_name):
-    application = app = Flask(__name__)
-    #CORS(app,resources={r"":{"origins":""}})
+    app = Flask(__name__)
+    CORS(app,resources={r"":{"origins":""}})
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
     log.setup_logging(config[config_name])
